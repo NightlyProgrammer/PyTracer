@@ -58,25 +58,29 @@ class App:
 
         self.scene = Scene()
 
-        material0 = Material((1,1,1), (0.01, 1, 1), 1)
+        material0 = Material((1,1,1), emissionColor=(0.01, 1, 1), emissionStrength=200)
         sphere0 = Sphere((0,0,-50),40, material0)
         #self.scene.add(sphere0)
 
-        material1 = Material((1,0.1,1), roughness=0.01)
-        sphere1 = Sphere((0.5,-0.4,-1),1, material1)
+        material1 = Material((1,1,1), roughness=0.01)
+        sphere1 = Sphere((0.5,0.1,-1),1, material1)
         self.scene.add(sphere1)
 
         material2 = Material((1,0,0.1))
         sphere2 = Sphere((-0.5,-0.5,1),0.5, material2)
         self.scene.add(sphere2)
 
-        material3 = Material((1, 1, 1),roughness=0.01)
+        material3 = Material((1, 1, 1),roughness=0.1)
         sphere3 = Sphere((-0.6,-100,1),99, material3)
         self.scene.add(sphere3)
 
         material4 = Material((1,0,1), (0.8, 0.5, 0.2), 2)
         sphere4 = Sphere((5,2,100),45, material4)
         self.scene.add(sphere4)
+
+        material5 = Material((1,1,1), emissionColor=(0.1, 1, 0.8), emissionStrength=1)
+        sphere5 = Sphere((1, 0, 0.45), 0.5, material5)
+        self.scene.add(sphere5)
 
         for i in range(10):
             m = Material((uniform(0,1),uniform(0,1),uniform(0,1)),roughness=uniform(0,1))
@@ -104,7 +108,7 @@ class App:
         pygame.quit()
         exit()
     
-    def take_screenshot(self,path="assets/screenshots/"):
+    def take_screenshot(self,path="src/assets/screenshots/"):
         n_of_screenshots = len([img for img in listdir(path) if img.split(".")[-1] == "png"])
         test = pygame.image.frombytes(self.ctx.screen.read(),self.screen_size,"RGB",True)
         pygame.image.save(test,path+f"screenshot{n_of_screenshots}.png")

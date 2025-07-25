@@ -14,7 +14,7 @@ class OpenGlHandler:#handle stuff like loading programs etc
         for gl_object in self.vertex_buffer_objects + self.verex_array_objects + self.programs + self.textures + self.framebuffers:
             gl_object.release()
 
-    def create_program(self, shader_name, path='./assets/shaders'):
+    def create_program(self, shader_name, path='./src/assets/shaders'):
         vertex_shader_name = shader_name.split('|')[0]
         fragment_shader_name = shader_name.split('|')[-1]
 

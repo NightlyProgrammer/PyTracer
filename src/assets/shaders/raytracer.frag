@@ -165,8 +165,8 @@ vec3 calculateColor(Ray ray, inout uint state){
             //ray.direction = normalize(info.normal + RandomDirection(state));
             
             normal = normalize(info.normal + RandomDirectionInHemisphere(info.normal, state) * material.roughness);
-            ray.direction = normalize(reflect(ray.direction, normal));
-            ray.direction = ray.direction + normal * material.roughness;
+            ray.direction = reflect(ray.direction, normal);
+            ray.direction = normalize(ray.direction + normal * material.roughness);
 
             rayBrightness += info.material.emissionColor * info.material.emissionStrength * rayColor;
             rayColor *= info.material.color;
